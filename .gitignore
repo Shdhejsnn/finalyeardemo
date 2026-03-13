@@ -1,0 +1,56 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python environments and caches
+.venv/
+venv/
+env/
+ENV/
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+
+# Databases and runtime state
+*.db
+*.sqlite
+*.sqlite3
+*.log
+*.pid
+*.seed
+
+# ML artifacts and generated files
+backend/models/*.pkl
+backend/models/*.joblib
+backend/data/*.mmdb
+
+# Frontend and extension artifacts
+node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Local dashboard or browser temp files
+dashboard/.cache/
+extension/.cache/
+
+# Keep existing backend ignores effective even if repo root is used
+backend/.venv/

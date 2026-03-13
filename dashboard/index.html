@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShieldX Telemetry Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">ShieldX Extension Telemetry</p>
+        <h1>Browser Security Command Center</h1>
+        <p class="hero-copy">Live metrics from your extension-driven browsing sessions, streamed through the ShieldX backend.</p>
+      </div>
+      <div class="hero-badge">
+        <span class="pulse"></span>
+        <span id="live-status">Syncing live data</span>
+      </div>
+    </header>
+
+    <section class="stats-grid">
+      <article class="stat-card">
+        <span class="stat-label">Websites Checked</span>
+        <strong id="total-events">0</strong>
+      </article>
+      <article class="stat-card blocked">
+        <span class="stat-label">Blocked</span>
+        <strong id="blocked-count">0</strong>
+      </article>
+      <article class="stat-card challenged">
+        <span class="stat-label">Captcha Challenges</span>
+        <strong id="challenged-count">0</strong>
+      </article>
+      <article class="stat-card allowed">
+        <span class="stat-label">Safe</span>
+        <strong id="allowed-count">0</strong>
+      </article>
+    </section>
+
+    <section class="layout-grid">
+      <article class="panel chart-panel">
+        <div class="panel-header">
+          <div>
+            <p class="panel-eyebrow">Decision Distribution</p>
+            <h2>Extension Verdict Mix</h2>
+          </div>
+          <span id="average-risk" class="risk-pill">Avg risk 0.000</span>
+        </div>
+        <div id="decision-bars" class="bars"></div>
+      </article>
+
+      <article class="panel summary-panel">
+        <div class="panel-header">
+          <div>
+            <p class="panel-eyebrow">Blocked Intelligence</p>
+            <h2>Recent Block Reasons</h2>
+          </div>
+        </div>
+        <div id="blocked-list" class="stack-list"></div>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <p class="panel-eyebrow">Recent Traffic</p>
+          <h2>Live Extension Events</h2>
+        </div>
+      </div>
+      <div id="events-table" class="events-table"></div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

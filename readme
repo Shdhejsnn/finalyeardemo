@@ -1,0 +1,6 @@
+1st - cd backend
+>> $env:DEBUG='false'
+>> .\.venv\Scripts\python.exe -m uvicorn main:app --reload
+
+2nd - cd dashboard
+>> ..\backend\.venv\Scripts\python.exe -m http.server 5500

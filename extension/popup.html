@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShieldX</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <main class="popup-shell">
+    <section class="hero-card">
+      <div class="eyebrow">ShieldX</div>
+      <h1>Live Tab Security</h1>
+      <p id="site-url" class="site-url">Waiting for analysis...</p>
+    </section>
+
+    <section class="status-card">
+      <div class="status-row">
+        <span class="status-label">Current verdict</span>
+        <span id="verdict-pill" class="verdict-pill neutral">Checking</span>
+      </div>
+      <div class="metric-grid">
+        <div class="metric-card">
+          <span class="metric-label">Risk Score</span>
+          <strong id="risk-score">0.000</strong>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Severity</span>
+          <strong id="severity-score">0</strong>
+        </div>
+      </div>
+      <p id="summary" class="summary-text">No analysis available yet.</p>
+      <p id="checked-at" class="timestamp">Last checked: waiting</p>
+    </section>
+
+    <section class="reasons-card">
+      <div class="section-title">Why ShieldX Decided This</div>
+      <ul id="reasons-list" class="reasons-list">
+        <li class="reason-item">Open a page to start automatic analysis.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    width: 360px;
+    min-height: 480px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(49, 132, 255, 0.25), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(13, 191, 162, 0.22), transparent 30%),
+        #08141f;
+    color: #e8f0fa;
+}
+
+.popup-shell {
+    padding: 18px;
+    display: grid;
+    gap: 14px;
+}
+
+.hero-card,
+.status-card,
+.reasons-card {
+    border-radius: 22px;
+    padding: 18px;
+    background: rgba(8, 19, 31, 0.86);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+}
+
+.eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #7dcfff;
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 28px;
+    line-height: 1.05;
+}
+
+.site-url {
+    margin: 12px 0 0;
+    color: #aac3d8;
+    word-break: break-word;
+    font-size: 13px;
+}
+
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-label,
+.section-title,
+.metric-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #89a2b9;
+}
+
+.verdict-pill {
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.verdict-pill.allow {
+    background: rgba(15, 157, 88, 0.18);
+    color: #6ce3a3;
+}
+
+.verdict-pill.challenge {
+    background: rgba(244, 180, 0, 0.18);
+    color: #ffd56b;
+}
+
+.verdict-pill.block {
+    background: rgba(219, 68, 55, 0.18);
+    color: #ff8f85;
+}
+
+.verdict-pill.neutral {
+    background: rgba(255, 255, 255, 0.08);
+    color: #c6d5e4;
+}
+
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.metric-card {
+    border-radius: 18px;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.metric-card strong {
+    display: block;
+    margin-top: 8px;
+    font-size: 24px;
+}
+
+.summary-text {
+    margin: 16px 0 0;
+    line-height: 1.55;
+    color: #d5e2ef;
+}
+
+.timestamp {
+    margin: 12px 0 0;
+    font-size: 12px;
+    color: #86a0b6;
+}
+
+.reasons-list {
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 10px;
+}
+
+.reason-item {
+    border-radius: 16px;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #dbe7f2;
+    line-height: 1.45;
+}
