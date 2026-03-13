@@ -1,6 +1,219 @@
-1st - cd backend
->> $env:DEBUG='false'
->> .\.venv\Scripts\python.exe -m uvicorn main:app --reload
+ShieldX / finalyeardemo
 
-2nd - cd dashboard
->> ..\backend\.venv\Scripts\python.exe -m http.server 5500
+This project has 3 parts:
+
+1. `backend/` - FastAPI phishing detection backend
+2. `extension/` - Chrome extension
+3. `dashboard/` - live dashboard UI
+
+
+Prerequisites
+
+- Windows with PowerShell
+- Python 3.11 recommended
+- Google Chrome
+
+
+Project structure
+
+- `backend/` runs the API on `http://127.0.0.1:8000`
+- `dashboard/` is served as a static site on `http://127.0.0.1:5500`
+- `extension/` is loaded into Chrome using `Load unpacked`
+
+
+Step 1: Open the project
+
+Open PowerShell in:
+
+```powershell
+c:\Users\Skanda H M\Desktop\finalyeardemo
+```
+
+
+Step 2: Backend setup
+
+Move into the backend:
+
+```powershell
+cd backend
+```
+
+Create a virtual environment if needed:
+
+```powershell
+python -m venv .venv
+```
+
+Activate it:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+Install dependencies:
+
+```powershell
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+
+Step 3: Run the backend
+
+From the `backend` folder:
+
+```powershell
+$env:DEBUG='false'
+.\.venv\Scripts\python.exe -m uvicorn main:app --reload
+```
+
+Expected result:
+
+- backend starts on `http://127.0.0.1:8000`
+- API docs are available at `http://127.0.0.1:8000/docs`
+
+
+Step 4: Run the dashboard
+
+Open a second PowerShell window.
+
+From the project root:
+
+```powershell
+cd dashboard
+..\backend\.venv\Scripts\python.exe -m http.server 5500
+```
+
+Open in browser:
+
+```text
+http://127.0.0.1:5500
+```
+
+The dashboard reads live data from the backend.
+
+
+Step 5: Load the Chrome extension
+
+1. Open Chrome
+2. Go to `chrome://extensions`
+3. Turn on `Developer mode`
+4. Click `Load unpacked`
+5. Select the folder:
+
+```text
+c:\Users\Skanda H M\Desktop\finalyeardemo\extension
+```
+
+After loading:
+
+- the ShieldX icon appears in Chrome
+- each newly opened website is analyzed automatically
+- the popup shows `ALLOW`, `CHALLENGE`, or `BLOCK`
+
+
+Step 6: Reload after code changes
+
+If extension files change:
+
+1. Go to `chrome://extensions`
+2. Click `Reload` on ShieldX
+3. Close and reopen the website tab you want to test
+
+If backend files change:
+
+- `uvicorn --reload` usually restarts automatically
+- if not, stop and run the backend again
+
+
+Quick run summary
+
+Terminal 1:
+
+```powershell
+cd c:\Users\Skanda H M\Desktop\finalyeardemo\backend
+$env:DEBUG='false'
+.\.venv\Scripts\python.exe -m uvicorn main:app --reload
+```
+
+Terminal 2:
+
+```powershell
+cd c:\Users\Skanda H M\Desktop\finalyeardemo\dashboard
+..\backend\.venv\Scripts\python.exe -m http.server 5500
+```
+
+Chrome:
+
+- Load unpacked extension from `extension/`
+
+
+Optional: Train the phishing model again
+
+From `backend/`:
+
+```powershell
+.\.venv\Scripts\python.exe -m app.ml.train_model data\phishing_site_urls.csv
+```
+
+This saves the trained model into:
+
+```text
+backend\models\phishing_model.pkl
+```
+
+
+Optional: Domain age and GeoIP notes
+
+- Domain age uses `python-whois`
+- GeoIP uses `geoip2`
+- GeoIP country lookups need a local MaxMind database file if you want full GeoIP results
+- WHOIS lookups can fail on restricted networks or blocked sockets
+
+
+How to test the full system
+
+1. Start backend
+2. Start dashboard
+3. Load extension
+4. Open a normal website like `https://github.com`
+5. Open a suspicious test URL
+6. Check:
+   - extension badge
+   - popup verdict
+   - dashboard event list
+
+
+Troubleshooting
+
+If backend does not start:
+
+- make sure dependencies are installed
+- make sure `DEBUG` is set to `false` or `true`, not some other value
+
+If dashboard is blank:
+
+- confirm backend is running on `127.0.0.1:8000`
+- refresh `http://127.0.0.1:5500`
+
+If extension still shows old behavior:
+
+- reload the extension from `chrome://extensions`
+- reopen the tab being tested
+
+If localhost sites are blocked:
+
+- reload the extension after recent code changes
+- localhost and private IP development URLs should be allowed automatically
+
+
+Files teammates should know
+
+- `backend/main.py`
+- `backend/requirements.txt`
+- `backend/app/services/analysis_service.py`
+- `extension/background.js`
+- `extension/content.js`
+- `extension/popup.js`
+- `dashboard/index.html`
+- `dashboard/app.js`
